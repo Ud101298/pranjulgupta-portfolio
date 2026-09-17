@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pranjul Gupta is a freelance graphic and web designer crafting bold brands, digital experiences, and creative visuals that convert."
+    />
+    <title>Pranjul Gupta | Graphic & Web Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">PG</div>
+          <div>
+            <p class="brand-name">Pranjul Gupta</p>
+            <span class="brand-role">Creative Designer</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button type="button" class="btn btn-primary open-project-form">Book a Project</button>
+      </header>
+
+      <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="project-modal-backdrop" data-close-modal></div>
+        <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+          <button type="button" class="modal-close" aria-label="Close inquiry form" data-close-modal>×</button>
+          <p class="eyebrow">Project inquiry</p>
+          <h3 id="projectModalTitle">Tell me about your project</h3>
+
+          <form id="projectForm">
+            <div class="field-grid">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+
+              <label>
+                Company
+                <input type="text" name="company" placeholder="Brand or company name" />
+              </label>
+
+              <label>
+                Project type
+                <select name="projectType">
+                  <option value="Brand Identity">Brand Identity</option>
+                  <option value="Marketing Design">Marketing Design</option>
+                  <option value="Social Media Creative">Social Media Creative</option>
+                  <option value="Web Design">Web Design</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                Budget range / expectation
+                <input type="text" name="budget" placeholder="e.g. Rs.500 - Rs.1500, flexible depending on scope" />
+              </label>
+
+              <label>
+                Timeline
+                <select name="timeline">
+                  <option value="Within 1 week">Within 1 week</option>
+                  <option value="Within 2-4 weeks">Within 2-4 weeks</option>
+                  <option value="Within 1 month+">Within 1 month+</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Project details
+              <textarea name="details" rows="5" placeholder="Tell me about your goal, audience, and what you need designed." required></textarea>
+            </label>
+
+            <button type="submit" class="btn btn-primary submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+
+      <main>
+        <section class="hero reveal">
+          <div class="hero-copy">
+            <p class="eyebrow">Available for Freelance & Full-time</p>
+            <h1>
+              Design that turns<br />
+              <span>attention into trust.</span>
+            </h1>
+            <p class="intro">
+              I help brands look premium, feel memorable, and perform better
+              online through smart branding, creative campaigns, and digital
+              design experiences.
+            </p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary open-project-form">Book a Project</button>
+              <a class="btn btn-secondary" href="https://www.behance.net/pranjulgupta3" target="_blank" rel="noreferrer">Behance</a>
+            </div>
+
+            <ul class="hero-stats">
+              <li><strong>4.5+</strong><span>Years Experience</span></li>
+              <li><strong>30+</strong><span>Projects Delivered</span></li>
+              <li><strong>12+</strong><span>Brands Supported</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Design portfolio preview">
+            <div class="visual-card visual-card-large">
+              <div class="card-top">
+                <span>Brand Identity</span>
+                <span>2026</span>
+              </div>
+              <div class="mockup mockup-one">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+              </div>
+              <div class="mini-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="floating-badge badge-one">Branding</div>
+            <div class="floating-badge badge-two">Social Media</div>
+            <div class="floating-badge badge-three">UI/UX</div>
+          </div>
+        </section>
+
+        <section class="metrics-strip reveal">
+          <div>
+            <strong>Branding</strong>
+            <span>Identity systems</span>
+          </div>
+          <div>
+            <strong>Marketing</strong>
+            <span>Campaign design</span>
+          </div>
+          <div>
+            <strong>Digital</strong>
+            <span>Web & creatives</span>
+          </div>
+          <div>
+            <strong>Strategy</strong>
+            <span>Visual messaging</span>
+          </div>
+        </section>
+
+        <section id="about" class="about section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">About</p>
+            <h2>Creative direction with business impact.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>
+                I’m a multidisciplinary designer focused on helping businesses
+                communicate clearly and look premium in a crowded market. My
+                work blends strategy, aesthetics, and storytelling to create
+                visuals that feel both artistic and effective.
+              </p>
+              <p>
+                From branding and marketing creatives to digital assets and web
+                visuals, I build design systems that make brands stand out and
+                connect with the right audience.
+              </p>
+            </div>
+
+            <div class="about-panel">
+              <div>
+                <span>Location</span>
+                <strong>Aligarh, India</strong>
+              </div>
+              <div>
+                <span>Experience</span>
+                <strong>4.5+ years</strong>
+              </div>
+              <div>
+                <span>Focus</span>
+                <strong>Branding • Digital • Growth</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="services section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Services</p>
+            <h2>Design solutions built for ambitious brands.</h2>
+          </div>
+
+          <div class="card-grid three-up">
+            <article class="feature-card">
+              <div class="icon">01</div>
+              <h3>Brand Identity</h3>
+              <p>Logo systems, visual direction, packaging cues, and memorable brand consistency.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">02</div>
+              <h3>Social Creative</h3>
+              <p>Campaign graphics, carousel design, reels covers, and performance-driven content.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">03</div>
+              <h3>Web & Digital</h3>
+              <p>Landing page visuals, promotional assets, and digital experiences that convert.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="work" class="work section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Selected Work</p>
+            <h2>Recent creative direction.</h2>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-item project-item-one">
+              <div class="project-content">
+                <span>Branding</span>
+                <h3>Luxury Brand Identity</h3>
+              </div>
+            </article>
+            <article class="project-item project-item-two">
+              <div class="project-content">
+                <span>Marketing</span>
+                <h3>Campaign Creative Set</h3>
+              </div>
+            </article>
+            <article class="project-item project-item-three">
+              <div class="project-content">
+                <span>Web</span>
+                <h3>Landing Page Visuals</h3>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="reviews" class="reviews section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Client Feedback</p>
+            <h2>Trusted by businesses that care about perception.</h2>
+          </div>
+
+          <div class="testimonial-grid">
+            <blockquote>
+              “Pranjul brings clarity, creativity, and sharp design thinking to every project. The final output felt premium and highly effective.”
+              <footer>— Brand Client</footer>
+            </blockquote>
+            <blockquote>
+              “The visual identity instantly gave our business a stronger presence and more confidence in front of clients.”
+              <footer>— Startup Founder</footer>
+            </blockquote>
+            <blockquote>
+              “Professional, responsive, and clear in communication. The designs were both eye-catching and strategic.”
+              <footer>— Marketing Lead</footer>
+            </blockquote>
+          </div>
+        </section>
+
+        <section id="process" class="process section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Workflow</p>
+            <h2>A smooth process from idea to launch.</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span>01</span>
+              <div>
+                <h3>Discover</h3>
+                <p>Understand your business, goals, and audience.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span>02</span>
+              <div>
+                <h3>Concept</h3>
+                <p>Build visual ideas that communicate value quickly.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span>03</span>
+              <div>
+                <h3>Refine</h3>
+                <p>Polish design details based on real feedback.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span>04</span>
+              <div>
+                <h3>Deliver</h3>
+                <p>Launch ready-to-use assets with confidence.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="cta section reveal">
+          <div class="cta-card">
+            <p class="eyebrow">Let’s build your next standout brand</p>
+            <h2>Need a designer who understands both aesthetics and results?</h2>
+            <div class="cta-row">
+              <button type="button" class="btn btn-primary open-project-form">gpranjul07@gmail.com</button>
+              <a class="btn btn-secondary" href="https://www.behance.net/pranjulgupta3" target="_blank" rel="noreferrer">Behance Portfolio</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Pranjul Gupta. Crafted for bold brands.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

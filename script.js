@@ -53,6 +53,34 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+// Form banner elements (in-page success / error message)
+const formBanner = document.getElementById('formBanner');
+const bannerMessageEl = formBanner ? formBanner.querySelector('.form-banner-message') : null;
+const bannerCloseBtn = formBanner ? formBanner.querySelector('[data-close-banner]') : null;
+
+const hideBanner = () => {
+  if (!formBanner) return;
+  formBanner.setAttribute('hidden', '');
+  formBanner.classList.remove('success', 'error');
+  if (formBanner._hideTimeout) {
+    clearTimeout(formBanner._hideTimeout);
+    formBanner._hideTimeout = null;
+  }
+};
+
+const showBanner = (message, type = 'success') => {
+  if (!formBanner || !bannerMessageEl) return;
+  bannerMessageEl.textContent = message;
+  formBanner.classList.remove('success', 'error');
+  formBanner.classList.add(type);
+  formBanner.removeAttribute('hidden');
+  bannerCloseBtn?.focus();
+  if (formBanner._hideTimeout) clearTimeout(formBanner._hideTimeout);
+  formBanner._hideTimeout = setTimeout(hideBanner, 6000);
+};
+
+bannerCloseBtn?.addEventListener('click', hideBanner);
+
 projectForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -79,10 +107,10 @@ projectForm.addEventListener('submit', async (event) => {
       // success
       closeModal();
       projectForm.reset();
-      alert('Thanks — your inquiry was sent successfully.');
+      showBanner('Thanks — your inquiry was sent successfully.', 'success');
     } else {
-      // server returned an error; fallback to mailto so user can still contact you
-      alert('Failed to send via Formspree. Opening email client as fallback.');
+      // server returned an error; show banner and fallback to mailto so user can still contact you
+      showBanner('Failed to send via Formspree. Opening email client as fallback.', 'error');
       const subject = encodeURIComponent(`Project Inquiry - ${payload.projectType}`);
       const body = encodeURIComponent(
         `Hi Pranjul,\n\nName: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company}\nProject Type: ${payload.projectType}\nBudget: ${payload.budget}\nTimeline: ${payload.timeline}\n\nProject Details:\n${payload.details}`
@@ -90,8 +118,8 @@ projectForm.addEventListener('submit', async (event) => {
       window.location.href = `mailto:gpranjul07@gmail.com?subject=${subject}&body=${body}`;
     }
   } catch (err) {
-    // network error; fallback to mailto
-    alert('Network error while sending inquiry. Opening email client as fallback.');
+    // network error; show banner and fallback to mailto
+    showBanner('Network error while sending inquiry. Opening email client as fallback.', 'error');
     const subject = encodeURIComponent(`Project Inquiry - ${payload.projectType}`);
     const body = encodeURIComponent(
       `Hi Pranjul,\n\nName: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company}\nProject Type: ${payload.projectType}\nBudget: ${payload.budget}\nTimeline: ${payload.timeline}\n\nProject Details:\n${payload.details}`

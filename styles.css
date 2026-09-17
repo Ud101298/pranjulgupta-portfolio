@@ -398,6 +398,41 @@ a {
   font-size: 0.82rem;
 }
 
+/* Form banner (success / error) */
+.form-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  color: #072012;
+}
+.form-banner[hidden] { display: none; }
+.form-banner .form-banner-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+.form-banner .form-banner-message { flex: 1; color: inherit; }
+.form-banner .form-banner-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.form-banner.success { background: linear-gradient(90deg, #dff6ea, #bff0d6); color: #08321b; }
+.form-banner.success .form-banner-icon { background: #0bb05b; color: white; }
+.form-banner.error { background: linear-gradient(90deg, #ffe7e7, #ffd0d0); color: #3b0a0a; }
+.form-banner.error .form-banner-icon { background: #e03b3b; color: white; }
+
+
 .section {
   padding-top: 110px;
 }

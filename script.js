@@ -25,6 +25,10 @@ const formButtons = document.querySelectorAll('.open-project-form');
 const closeButtons = document.querySelectorAll('[data-close-modal]');
 const projectForm = document.getElementById('projectForm');
 
+// Replace the value below with your Formspree form endpoint, e.g.
+// 'https://formspree.io/f/mnqlkzqp' (you get this when you create a form at https://formspree.io)
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnpnqdjo';
+
 const openModal = () => {
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
@@ -49,31 +53,49 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
-projectForm.addEventListener('submit', (event) => {
+projectForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const formData = new FormData(projectForm);
-  const name = formData.get('name')?.toString().trim() || 'Client';
-  const email = formData.get('email')?.toString().trim() || 'No email provided';
-  const company = formData.get('company')?.toString().trim() || 'Not provided';
-  const projectType = formData.get('projectType')?.toString() || 'Not specified';
-  const budget = formData.get('budget')?.toString() || 'Not specified';
-  const timeline = formData.get('timeline')?.toString() || 'Not specified';
-  const details = formData.get('details')?.toString().trim() || 'No details provided';
+  const payload = {
+    name: formData.get('name')?.toString().trim() || 'Client',
+    email: formData.get('email')?.toString().trim() || 'No email provided',
+    company: formData.get('company')?.toString().trim() || 'Not provided',
+    projectType: formData.get('projectType')?.toString() || 'Not specified',
+    budget: formData.get('budget')?.toString() || 'Not specified',
+    timeline: formData.get('timeline')?.toString() || 'Not specified',
+    details: formData.get('details')?.toString().trim() || 'No details provided',
+  };
 
-  const subject = encodeURIComponent(`Project Inquiry - ${projectType}`);
-  const body = encodeURIComponent(
-    `Hi Pranjul,\n\n` +
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      `Company: ${company}\n` +
-      `Project Type: ${projectType}\n` +
-      `Budget: ${budget}\n` +
-      `Timeline: ${timeline}\n\n` +
-      `Project Details:\n${details}`
-  );
+  // POST to Formspree (replace FORMSPREE_ENDPOINT with your real endpoint)
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
 
-  window.location.href = `mailto:gpranjul07@gmail.com?subject=${subject}&body=${body}`;
-  closeModal();
-  projectForm.reset();
+    if (res.ok) {
+      // success
+      closeModal();
+      projectForm.reset();
+      alert('Thanks — your inquiry was sent successfully.');
+    } else {
+      // server returned an error; fallback to mailto so user can still contact you
+      alert('Failed to send via Formspree. Opening email client as fallback.');
+      const subject = encodeURIComponent(`Project Inquiry - ${payload.projectType}`);
+      const body = encodeURIComponent(
+        `Hi Pranjul,\n\nName: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company}\nProject Type: ${payload.projectType}\nBudget: ${payload.budget}\nTimeline: ${payload.timeline}\n\nProject Details:\n${payload.details}`
+      );
+      window.location.href = `mailto:gpranjul07@gmail.com?subject=${subject}&body=${body}`;
+    }
+  } catch (err) {
+    // network error; fallback to mailto
+    alert('Network error while sending inquiry. Opening email client as fallback.');
+    const subject = encodeURIComponent(`Project Inquiry - ${payload.projectType}`);
+    const body = encodeURIComponent(
+      `Hi Pranjul,\n\nName: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company}\nProject Type: ${payload.projectType}\nBudget: ${payload.budget}\nTimeline: ${payload.timeline}\n\nProject Details:\n${payload.details}`
+    );
+    window.location.href = `mailto:gpranjul07@gmail.com?subject=${subject}&body=${body}`;
+  }
 });
